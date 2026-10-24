@@ -1,0 +1,480 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2f6b4f">
+  <meta name="description" content="168cm、80kg 男性的 30 天减脂启动计划：中式家常饮食、居家无器械训练、每日打卡和体重趋势记录。">
+  <title>轻启 30 · 168/80 减脂启动计划</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232f6b4f'/%3E%3Cpath d='M18 38c8-18 20-18 28 0' fill='none' stroke='%23f6c85f' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='24' r='5' fill='%23fff8ec'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <header class="topbar">
+    <div class="shell topbar__inner">
+      <a class="brand" href="#overview" aria-label="轻启 30 首页">
+        <span class="brand__mark" aria-hidden="true">30</span>
+        <span>
+          <strong>轻启</strong>
+          <small>把改变拆成今天</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">打开导航</span>
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="主导航">
+        <a href="#today">今日</a>
+        <a href="#roadmap">30 天</a>
+        <a href="#training">训练</a>
+        <a href="#food">饮食</a>
+        <a href="#records">记录</a>
+        <a class="nav-cta" href="#profile">调整计划</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero shell" id="overview">
+      <div class="hero__copy">
+        <p class="eyebrow"><span></span>168 cm · 80 kg · 30 天启动</p>
+        <h1>不狠减，先把身体<br><em>带回正轨。</em></h1>
+        <p class="hero__lead">这不是一场拼命挨饿的挑战。用 30 天建立三餐、走路、力量和睡眠的基本节奏，先稳稳减掉约 2.5–3 kg。</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#today">开始今天</a>
+          <a class="button button--ghost" href="#roadmap">查看完整计划</a>
+        </div>
+        <div class="hero__promise">
+          <span class="promise-icon" aria-hidden="true">✓</span>
+          <p><strong>首月是启动，不是终点。</strong> 77 kg 先作为冲刺目标，健康范围再分阶段抵达。</p>
+        </div>
+      </div>
+
+      <div class="hero__dashboard" aria-label="当前计划摘要">
+        <article class="bmi-card card">
+          <div class="bmi-ring" id="bmiRing" style="--bmi-progress: 62%">
+            <div class="bmi-ring__inner">
+              <span>当前 BMI</span>
+              <strong id="bmiValue">28.3</strong>
+              <small id="bmiLabel">超重范围</small>
+            </div>
+          </div>
+          <div class="bmi-copy">
+            <p class="card-kicker">身体概况</p>
+            <h2 id="heroWeight">80.0 kg</h2>
+            <p>身高固定为 <span id="heroHeight">168</span> cm。健康 BMI 范围为 18.5–23.9。</p>
+          </div>
+        </article>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span class="metric-card__icon tone-green" aria-hidden="true">↓</span>
+            <div><small>首月目标</small><strong id="monthlyGoal">减 3.0 kg</strong></div>
+          </article>
+          <article class="metric-card">
+            <span class="metric-card__icon tone-orange" aria-hidden="true">日</span>
+            <div><small>计划剩余</small><strong id="daysRemaining">30 天</strong></div>
+          </article>
+          <article class="metric-card">
+            <span class="metric-card__icon tone-yellow" aria-hidden="true">火</span>
+            <div><small>每日热量</small><strong id="calorieTarget">1850 kcal</strong></div>
+          </article>
+          <article class="metric-card">
+            <span class="metric-card__icon tone-blue" aria-hidden="true">率</span>
+            <div><small>总完成率</small><strong id="overallProgress">0%</strong></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="today">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>今天的五件小事</p>
+          <h2>完成一点，就算赢一点</h2>
+          <p>每天只检查 5 项。稳定完成 70%，比偶尔做到 100% 更有用。</p>
+        </div>
+        <div class="date-pill" id="todayDate">今天</div>
+      </header>
+
+      <div class="today-layout">
+        <article class="card today-card">
+          <div class="today-card__top">
+            <div>
+              <span class="day-chip" id="selectedDayChip">DAY 1</span>
+              <h3 id="selectedDateTitle">今天</h3>
+              <p id="selectedDateHint">把注意力放在能完成的最小行动上。</p>
+            </div>
+            <div class="progress-ring" id="dailyRing" style="--progress: 0%">
+              <div><strong id="dailyProgress">0%</strong><small>今日完成</small></div>
+            </div>
+          </div>
+
+          <div class="task-list" id="taskList">
+            <label class="task-item">
+              <input type="checkbox" data-task="meals">
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-icon" aria-hidden="true">碗</span>
+              <span class="task-copy"><strong>三餐按份量吃</strong><small>主食一拳 · 蛋白质一掌 · 蔬菜两拳</small></span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" data-task="steps">
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-icon" aria-hidden="true">步</span>
+              <span class="task-copy"><strong id="stepTaskTitle">走到 6000 步</strong><small>能说话、微微出汗的强度</small></span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" data-task="training">
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-icon" aria-hidden="true">练</span>
+              <span class="task-copy"><strong>完成今日训练</strong><small id="trainingTaskHint">居家力量约 25 分钟</small></span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" data-task="water">
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-icon" aria-hidden="true">水</span>
+              <span class="task-copy"><strong>饮水 2.5 L</strong><small>少量多次，不用一次灌完</small></span>
+            </label>
+            <label class="task-item">
+              <input type="checkbox" data-task="sleep">
+              <span class="task-check" aria-hidden="true"></span>
+              <span class="task-icon" aria-hidden="true">眠</span>
+              <span class="task-copy"><strong>睡足 7 小时</strong><small>睡不够时更容易饿，也更想放弃</small></span>
+            </label>
+          </div>
+        </article>
+
+        <aside class="today-side">
+          <article class="card focus-card">
+            <div class="focus-card__head">
+              <p class="card-kicker">本周重点</p>
+              <span id="weekBadge">第 1 周</span>
+            </div>
+            <h3 id="weekTitle">先让身体动起来</h3>
+            <p id="weekDescription">适应训练节奏，本周不追求力竭。</p>
+            <div class="focus-stats">
+              <div><small>步数目标</small><strong id="weekStepTarget">6000 步</strong></div>
+              <div><small>力量训练</small><strong>3 次</strong></div>
+              <div><small>快走</small><strong id="weekWalkCount">2 次</strong></div>
+            </div>
+          </article>
+
+          <article class="card calendar-card">
+            <div class="calendar-card__head">
+              <div><p class="card-kicker">30 天日历</p><h3>点击查看某一天</h3></div>
+              <span id="calendarCompletion">0 / 150</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid" aria-label="30 天打卡日历"></div>
+            <div class="calendar-legend"><span><i class="dot dot--done"></i>已完成</span><span><i class="dot dot--partial"></i>进行中</span><span><i class="dot dot--empty"></i>待完成</span></div>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section shell" id="roadmap">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>四周渐变，不突然加码</p>
+          <h2>30 天路线图</h2>
+          <p>每次只多一点点。你的目标不是第一周拼到极限，而是第四周仍然愿意继续。</p>
+        </div>
+      </header>
+      <div class="roadmap" id="roadmapCards">
+        <article class="week-card" data-week="1">
+          <span class="week-card__number">01</span>
+          <div class="week-card__status">基础周</div>
+          <h3>建立动作与吃饭节奏</h3>
+          <p>先熟悉训练动作，三餐吃到七八分饱，晚上不再加高热量宵夜。</p>
+          <ul><li>日均 6000 步</li><li>力量训练 3 次 × 25 分钟</li><li>快走 2 次 × 20 分钟</li></ul>
+        </article>
+        <article class="week-card" data-week="2">
+          <span class="week-card__number">02</span>
+          <div class="week-card__status">稳定周</div>
+          <h3>把训练变成固定安排</h3>
+          <p>每次多做一个动作或一组，外卖和聚餐开始使用份量规则。</p>
+          <ul><li>日均 7000 步</li><li>力量训练 3 次 × 30 分钟</li><li>快走 2 次 × 25 分钟</li></ul>
+        </article>
+        <article class="week-card" data-week="3">
+          <span class="week-card__number">03</span>
+          <div class="week-card__status">推进周</div>
+          <h3>让强度轻一点地上升</h3>
+          <p>动作保持标准，组间休息缩短；晚餐减少精制主食，不减少蔬菜。</p>
+          <ul><li>日均 8000 步</li><li>力量训练 3 次 × 35 分钟</li><li>快走 2 次 × 30 分钟</li></ul>
+        </article>
+        <article class="week-card" data-week="4">
+          <span class="week-card__number">04</span>
+          <div class="week-card__status">巩固周</div>
+          <h3>确认这套生活能长期继续</h3>
+          <p>增加一次快走，但不增加额外节食；复盘哪三件事最值得保留。</p>
+          <ul><li>日均 8000 步左右</li><li>力量训练 3 次 × 35 分钟</li><li>快走 3 次 × 30 分钟</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="training">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>居家无器械</p>
+          <h2>每周这样练</h2>
+          <p>训练日前做 5 分钟动态热身；结束后拉伸 5 分钟。任何动作出现尖锐疼痛都立即停止。</p>
+        </div>
+      </header>
+      <div class="training-layout">
+        <article class="card schedule-card">
+          <div class="schedule-list">
+            <div class="schedule-item"><span>周一</span><div><strong>下肢力量</strong><small>深蹲、臀桥、后撤步、提踵</small></div><em>25–35 分</em></div>
+            <div class="schedule-item"><span>周二</span><div><strong>快走</strong><small>能说短句、不能轻松唱歌</small></div><em>20–30 分</em></div>
+            <div class="schedule-item"><span>周三</span><div><strong>上肢与核心</strong><small>俯卧撑变式、反向划船、平板支撑</small></div><em>25–35 分</em></div>
+            <div class="schedule-item schedule-item--rest"><span>周四</span><div><strong>主动恢复</strong><small>散步、髋肩活动、轻度拉伸</small></div><em>15 分</em></div>
+            <div class="schedule-item"><span>周五</span><div><strong>全身循环</strong><small>深蹲、俯卧撑、臀桥、鸟狗、登山跑替代</small></div><em>25–35 分</em></div>
+            <div class="schedule-item"><span>周六</span><div><strong>户外快走</strong><small>选择有坡度的安全路线</small></div><em>30–45 分</em></div>
+            <div class="schedule-item schedule-item--rest"><span>周日</span><div><strong>完全恢复</strong><small>只做轻松活动，给身体留下修复时间</small></div><em>自由</em></div>
+          </div>
+        </article>
+        <div class="training-notes">
+          <article class="card note-card">
+            <span class="note-number">01</span>
+            <h3>力量动作</h3>
+            <p>每个动作 3 组，每组留 2–3 次余力。深蹲可扶椅背，俯卧撑可跪姿或靠墙。</p>
+          </article>
+          <article class="card note-card">
+            <span class="note-number">02</span>
+            <h3>膝盖不舒服</h3>
+            <p>缩小深蹲幅度，用臀桥、高脚杯式坐站和低冲击抬膝替代跳跃动作。</p>
+          </article>
+          <article class="card note-card">
+            <span class="note-number">03</span>
+            <h3>手腕不舒服</h3>
+            <p>用墙面俯卧撑或在俯卧撑支架上完成；仍疼痛时改为哑铃式等长推墙。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="food">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>中式家常，不用称重</p>
+          <h2>每餐用三个体积来估量</h2>
+          <p>先保证蛋白质和蔬菜，再调整主食。吃得规律，比追求“完美餐单”更重要。</p>
+        </div>
+      </header>
+
+      <div class="food-layout">
+        <article class="card plate-card">
+          <div class="plate-visual" aria-hidden="true">
+            <div class="plate plate--protein"><span>一掌</span><strong>蛋白质</strong></div>
+            <div class="plate plate--veg"><span>两拳</span><strong>蔬菜</strong></div>
+            <div class="plate plate--carb"><span>一拳</span><strong>主食</strong></div>
+            <div class="plate plate--fat"><span>一拇指</span><strong>油脂</strong></div>
+          </div>
+          <div class="plate-copy">
+            <p class="card-kicker">实用的餐盘规则</p>
+            <h3>先夹菜和肉，再决定饭吃多少</h3>
+            <p>优先选择蒸、煮、炖、炒和烤。相同食材少一勺油、少一杯含糖饮料，就能省下很多热量。</p>
+          </div>
+        </article>
+
+        <div class="meal-grid">
+          <article class="card meal-card">
+            <div class="meal-card__head"><span>早餐</span><strong>约 450 kcal</strong></div>
+            <h3>鸡蛋 + 主食 + 奶豆类</h3>
+            <p>2 个鸡蛋、1 个全麦馒头或 1 碗燕麦粥，配无糖豆浆/牛奶，再加一份水果。</p>
+          </article>
+          <article class="card meal-card">
+            <div class="meal-card__head"><span>午餐</span><strong>约 650 kcal</strong></div>
+            <h3>正常家常饭，主食一拳半</h3>
+            <p>如米饭 + 青椒牛肉 + 清炒时蔬。先吃菜和肉，再吃米饭；汤汁少拌饭。</p>
+          </article>
+          <article class="card meal-card">
+            <div class="meal-card__head"><span>晚餐</span><strong>约 600 kcal</strong></div>
+            <h3>蛋白质足，主食稍减</h3>
+            <p>如杂粮饭 + 清蒸鱼/豆腐 + 两份蔬菜。训练日可保留一拳主食，休息日减半拳。</p>
+          </article>
+          <article class="card meal-card">
+            <div class="meal-card__head"><span>加餐</span><strong>约 150 kcal</strong></div>
+            <h3>饿时吃，不硬扛</h3>
+            <p>无糖酸奶、一个苹果、一小把坚果或一个茶叶蛋，任选一份。</p>
+          </article>
+        </div>
+      </div>
+
+      <article class="card swap-card">
+        <div>
+          <p class="card-kicker">替换清单</p>
+          <h3>不用戒掉喜欢的食物，只换更划算的版本</h3>
+        </div>
+        <div class="swap-grid">
+          <div><span>白米饭</span><b>→</b><strong>杂粮饭 / 米饭减半 + 多一份菜</strong></div>
+          <div><span>炸鸡</span><b>→</b><strong>去皮烤鸡腿 / 卤鸡腿</strong></div>
+          <div><span>奶茶</span><b>→</b><strong>无糖茶 / 无糖气泡水 / 黑咖啡</strong></div>
+          <div><span>夜宵泡面</span><b>→</b><strong>鸡蛋 + 豆腐 + 蔬菜汤</strong></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section shell" id="records">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>只看趋势，不被单日数字绑架</p>
+          <h2>体重与腰围记录</h2>
+          <p>每周固定 2–3 次、晨起如厕后、空腹且穿着相近时称重。单日上涨多半是水分。</p>
+        </div>
+      </header>
+
+      <div class="records-layout">
+        <article class="card chart-card">
+          <div class="chart-card__head">
+            <div><p class="card-kicker">体重趋势</p><h3 id="chartTitle">从 80.0 kg 开始</h3></div>
+            <div class="chart-legend"><span><i class="line line--raw"></i>记录值</span><span><i class="line line--trend"></i>7 日趋势</span></div>
+          </div>
+          <div class="chart-wrap">
+            <svg id="weightChart" viewBox="0 0 720 300" role="img" aria-labelledby="chartTitle chartDesc"></svg>
+            <p class="sr-only" id="chartDesc">体重记录与七日移动趋势折线图。</p>
+            <div class="chart-empty" id="chartEmpty">记录第一次体重后，趋势会从这里开始。</div>
+          </div>
+          <div class="chart-summary">
+            <div><small>最新记录</small><strong id="latestWeight">80.0 kg</strong></div>
+            <div><small>累计变化</small><strong id="weightChange">0.0 kg</strong></div>
+            <div><small>距离目标</small><strong id="targetGap">3.0 kg</strong></div>
+          </div>
+        </article>
+
+        <div class="record-side">
+          <form class="card record-form" id="weightForm" novalidate>
+            <p class="card-kicker">新增记录</p>
+            <h3>给今天留一个数字</h3>
+            <label>日期<input id="weightDate" name="date" type="date" required></label>
+            <div class="form-row">
+              <label>体重（kg）<input id="weightValue" name="weight" type="number" inputmode="decimal" min="35" max="250" step="0.1" placeholder="80.0" required></label>
+              <label>腰围（cm，可选）<input id="waistValue" name="waist" type="number" inputmode="decimal" min="40" max="200" step="0.1" placeholder="95.0"></label>
+            </div>
+            <p class="form-error" id="weightError" role="alert"></p>
+            <button class="button button--primary button--full" type="submit">保存记录</button>
+          </form>
+
+          <article class="card recent-card">
+            <div class="recent-card__head"><p class="card-kicker">最近记录</p><button type="button" id="clearWeights">清除体重记录</button></div>
+            <div id="recentRecords" class="recent-list"><p class="empty-copy">还没有额外记录。</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="review">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>每周 10 分钟复盘</p>
+          <h2>不要只看体重秤</h2>
+          <p>至少比较两周数据再调整。一次没做到，不代表计划失败，只代表下周需要更简单。</p>
+        </div>
+      </header>
+      <div class="review-layout">
+        <article class="card review-card">
+          <span class="review-card__number">每周问题</span>
+          <ol>
+            <li><span>01</span><p><strong>体重趋势下降了吗？</strong><small>比较本周与上周的平均值，而不是某一天。</small></p></li>
+            <li><span>02</span><p><strong>腰围或衣服松紧有变化吗？</strong><small>体重不动但腰围下降，仍然是有效进展。</small></p></li>
+            <li><span>03</span><p><strong>哪两天最容易吃过量？</strong><small>提前准备那两天的替代方案，而不是责怪意志力。</small></p></li>
+            <li><span>04</span><p><strong>训练完成了几次？</strong><small>低于 2 次时，把训练缩短到 15 分钟再重新开始。</small></p></li>
+          </ol>
+        </article>
+        <article class="card adjust-card">
+          <p class="card-kicker">调整规则</p>
+          <h3>连续两周无变化，只改一点点</h3>
+          <div class="adjust-step"><span>1</span><p><strong>先检查记录是否完整</strong><small>确认没有漏记饮料、零食、酱汁和周末聚餐。</small></p></div>
+          <div class="adjust-step"><span>2</span><p><strong>再增加 1000 步</strong><small>连续 5 天达标后，体重仍无变化再考虑减少热量。</small></p></div>
+          <div class="adjust-step"><span>3</span><p><strong>最后减 100–150 kcal</strong><small>优先减少精制主食、油或零食，不再压缩蛋白质和蔬菜。</small></p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="profile">
+      <header class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span>个人数据与计算</p>
+          <h2>让计划适合你</h2>
+          <p>修改后立即重新计算 BMI、TDEE、热量和宏量营养目标，并更新当前 30 天计划。</p>
+        </div>
+      </header>
+
+      <div class="profile-layout">
+        <form class="card profile-form" id="profileForm" novalidate>
+          <div class="form-grid">
+            <label>年龄（岁）<input id="profileAge" type="number" min="18" max="80" step="1" value="30" required></label>
+            <label>性别<select id="profileSex"><option value="male">男性</option><option value="female">女性</option></select></label>
+            <label>身高（cm）<input id="profileHeight" type="number" min="140" max="220" step="0.5" value="168" required></label>
+            <label>活动水平
+              <select id="profileActivity">
+                <option value="sedentary">久坐，几乎不运动</option>
+                <option value="light" selected>轻度活动，每周运动 1–3 次</option>
+                <option value="moderate">中度活动，每周运动 3–5 次</option>
+                <option value="high">高度活动，体力工作或高频训练</option>
+              </select>
+            </label>
+            <label>起始体重（kg）<input id="profileStartWeight" type="number" min="40" max="250" step="0.1" value="80" required></label>
+            <label>目标体重（kg）<input id="profileTargetWeight" type="number" min="40" max="250" step="0.1" value="77" required></label>
+            <label>开始日期<input id="profileStartDate" type="date" required></label>
+          </div>
+          <p class="form-error" id="profileError" role="alert"></p>
+          <div class="profile-form__actions">
+            <button class="button button--primary" type="submit">保存并重算</button>
+            <button class="button button--danger-ghost" type="button" id="openResetDialog">重置全部数据</button>
+          </div>
+        </form>
+
+        <aside class="card nutrition-card">
+          <p class="card-kicker">每日参考</p>
+          <h3 id="nutritionTitle">1850 kcal</h3>
+          <p id="nutritionDescription">基于 30 岁男性、168 cm、80 kg、轻度活动，并预留约 500 kcal 的温和热量缺口。</p>
+          <div class="macro-list">
+            <div><span class="macro-color macro-color--protein"></span><p><strong id="proteinTarget">128 g</strong><small>蛋白质</small></p><em id="proteinCalories">512 kcal</em></div>
+            <div><span class="macro-color macro-color--fat"></span><p><strong id="fatTarget">56 g</strong><small>脂肪</small></p><em id="fatCalories">504 kcal</em></div>
+            <div><span class="macro-color macro-color--carb"></span><p><strong id="carbTarget">209 g</strong><small>碳水</small></p><em id="carbCalories">836 kcal</em></div>
+          </div>
+          <div class="calculation-note">
+            <div><small>基础代谢 BMR</small><strong id="bmrValue">1705 kcal</strong></div>
+            <div><small>维持热量 TDEE</small><strong id="tdeeValue">2344 kcal</strong></div>
+          </div>
+          <p class="safety-mini">热量目标不会低于男性 1500 / 女性 1200 kcal 的安全下限。此工具不代替医疗建议。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="safety-section">
+      <div class="shell safety-card">
+        <div class="safety-card__icon" aria-hidden="true">!</div>
+        <div>
+          <p class="eyebrow"><span></span>安全边界</p>
+          <h2>减脂是改善生活，不是惩罚身体</h2>
+          <p>如果你有糖尿病、高血压、心血管疾病、进食障碍史、关节伤病，或正在服用影响体重与血糖的药物，请先咨询医生。出现持续头晕、心悸、晕厥、异常乏力或暴食冲动时，应停止激进减脂并及时就医。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__inner">
+      <div><strong>轻启 30</strong><p>数据仅保存在当前浏览器，不会上传到服务器。</p></div>
+      <a href="#overview">回到顶部</a>
+    </div>
+  </footer>
+
+  <dialog class="reset-dialog" id="resetDialog" aria-labelledby="resetTitle">
+    <form method="dialog">
+      <span class="dialog-icon" aria-hidden="true">↺</span>
+      <h2 id="resetTitle">确定重置全部数据？</h2>
+      <p>打卡记录、体重记录和个人设置都会被清除，且无法恢复。</p>
+      <div class="dialog-actions">
+        <button class="button button--ghost" value="cancel">先保留</button>
+        <button class="button button--danger" value="confirm" id="confirmReset">确认重置</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
